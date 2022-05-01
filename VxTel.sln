@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VxTel.Api", "VxTel.Api\VxTel.Api.csproj", "{5DE9334A-426A-4CE4-9CF2-7A8EBBF98FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VxTel.Api", "VxTel.Api\VxTel.Api.csproj", "{5DE9334A-426A-4CE4-9CF2-7A8EBBF98FE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VxTel.Shared", "VxTel.Shared\VxTel.Shared.csproj", "{BEB05CEC-022A-42B2-AA72-17C4CCB900DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VxTel.Core", "VxTel.Core\VxTel.Core.csproj", "{FCF2D3E2-411F-4BC5-8B73-9DE6B6518513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{5DE9334A-426A-4CE4-9CF2-7A8EBBF98FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DE9334A-426A-4CE4-9CF2-7A8EBBF98FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DE9334A-426A-4CE4-9CF2-7A8EBBF98FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB05CEC-022A-42B2-AA72-17C4CCB900DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB05CEC-022A-42B2-AA72-17C4CCB900DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB05CEC-022A-42B2-AA72-17C4CCB900DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB05CEC-022A-42B2-AA72-17C4CCB900DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF2D3E2-411F-4BC5-8B73-9DE6B6518513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF2D3E2-411F-4BC5-8B73-9DE6B6518513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF2D3E2-411F-4BC5-8B73-9DE6B6518513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF2D3E2-411F-4BC5-8B73-9DE6B6518513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
