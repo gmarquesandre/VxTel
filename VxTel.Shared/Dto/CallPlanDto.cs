@@ -1,6 +1,4 @@
-﻿using VxTel.Shared.Models;
-
-namespace VxTel.Shared.Dto
+﻿namespace VxTel.Shared.Dto
 {
     public class CallPlanDto
     {
