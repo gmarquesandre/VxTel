@@ -18,10 +18,10 @@ namespace VxTel.Api.Controllers
             _compareDomain = compareDomain;
         }
 
-        [HttpGet("GetCallPrices")]
-        public IActionResult ComparePrices(InputCompareDto input)
+        [HttpPost("GetCallPrices")]
+        public async Task<IActionResult> ComparePricesAsync(InputCompareDto input)
         {          
-            return Ok(_compareDomain.GetCompareUsagePrice(input));
+            return Ok(await _compareDomain.GetCompareUsagePrice(input));
 
         }
 

@@ -19,11 +19,18 @@ namespace VxTel.Api.Controllers
         }
 
         [HttpGet("GetCallPlans")]
-        public IActionResult GetlCallPlans()
+        public async Task<IActionResult> GetlCallPlansAsync()
         {
-            var plans = _planDomain.GetAllPlans();
-            //Mapear para Dto
-            return Ok(plans);
+            var plans = await _planDomain.GetAllPlans();
+
+            var plansDto = plans.Select(a => new CallPlanDto
+            {
+                ExcedeedTimeFeePercentage = a.ExcedeedTimeFeePercentage,
+                FreeTime = a.FreeTime,
+                Name = a.Name
+            }).ToList();
+
+            return Ok(plansDto);
         }
 
     }

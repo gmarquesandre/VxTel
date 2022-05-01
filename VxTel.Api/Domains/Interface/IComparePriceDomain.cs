@@ -1,11 +1,11 @@
 ﻿using VxTel.Shared.Dto;
 using VxTel.Shared.Models;
 
-namespace VxTel.Api.Domains.Interface
+namespace VxTel.Api.Domains.Implementation
 {
     public interface IComparePriceDomain
     {
-        CallPriceCompareDto GetCompareUsagePrice(InputCompareDto input);
+        Task<CallPriceCompareDto> GetCompareUsagePrice(InputCompareDto input);
         double GetPriceWithPlan(CallPlan planType, CallPrice callPrice, int callTime);
     }
 }

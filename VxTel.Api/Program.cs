@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<CallPlanDomain, CallPlanDomain>();
 builder.Services.AddScoped<CallPriceDomain, CallPriceDomain>();
+builder.Services.AddScoped<ComparePriceDomain, ComparePriceDomain>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -18,13 +19,13 @@ builder.Services.AddSwaggerGen(c =>
     { c.SwaggerDoc("v1", new OpenApiInfo { Title = "VxTel Api", Version = "v1" });
 });
 
-    builder.Services.AddDbContext<VxTelDbContext>(options =>
-    {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+builder.Services.AddDbContext<VxTelDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 
-    });
+});
 
-    var app = builder.Build();
+var app = builder.Build();
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())

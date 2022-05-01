@@ -1,5 +1,4 @@
-﻿using VxTel.Api.Domains.Interface;
-using VxTel.Shared.Dto;
+﻿using VxTel.Shared.Dto;
 using VxTel.Shared.Models;
 
 namespace VxTel.Api.Domains.Implementation
@@ -14,13 +13,11 @@ namespace VxTel.Api.Domains.Implementation
             _priceDomain = priceDomain;
         }
 
-        public CallPriceCompareDto GetCompareUsagePrice(InputCompareDto input)
+        public async Task<CallPriceCompareDto> GetCompareUsagePrice(InputCompareDto input)
         {
-
-
             var callPrice = _priceDomain.GetPriceByOriginAndDestiny(input.FromDDD, input.ToDDD);
 
-            var planType = _planDomain.GetPlanById(input.CallPlanId);
+            var planType = await _planDomain.GetPlanById(input.CallPlanId);
 
             var priceWithPlan = GetPriceWithPlan(planType, callPrice, input.CallTime);
 

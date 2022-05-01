@@ -32,10 +32,14 @@ namespace VxTel.Api
 
             var _defaultPlans = new DefaultCallPlan();
             modelBuilder.Entity<CallPlan>().HasData(_defaultPlans.GetDefaultPlans());
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+
+            if (options.IsConfigured) return;
+
             IConfigurationRoot configuration = new ConfigurationBuilder()
             .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
             .AddJsonFile("appsettings.json")

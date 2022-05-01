@@ -4,7 +4,6 @@
     {
         public string Name { get; set; }
         public int FreeTime { get; set; }
-        public double ExcedeedTimeFeePercentage { get; set; }      
-
+        public double ExcedeedTimeFeePercentage { get; set; }
     }
 }

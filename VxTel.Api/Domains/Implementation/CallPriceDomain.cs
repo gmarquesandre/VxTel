@@ -1,4 +1,4 @@
-﻿using VxTel.Api.Domains.Interface;
+﻿using Microsoft.EntityFrameworkCore;
 using VxTel.Shared.Models;
 
 namespace VxTel.Api.Domains.Implementation
@@ -6,14 +6,14 @@ namespace VxTel.Api.Domains.Implementation
     public class CallPriceDomain : ICallPriceDomain
     {
         public VxTelDbContext _context;
-        public CallPriceDomain()
+        public CallPriceDomain(VxTelDbContext context)
         {
-            _context = new VxTelDbContext();
+            _context = context;
         }
 
-        public List<CallPrice> GetAllPrices()
+        public async Task<List<CallPrice>> GetAllPrices()
         {
-            return _context.CallPrices.ToList();
+            return await _context.CallPrices.ToListAsync();
         }
 
         public CallPrice GetPriceByOriginAndDestiny(string fromDDD, string toDDD)
@@ -28,8 +28,35 @@ namespace VxTel.Api.Domains.Implementation
             return callPrice;
         }
 
+        public async Task<CallPrice> GetPriceById(int id)
+        {
+            var callPrice = await _context.CallPrices.FirstOrDefaultAsync(a => a.Id == id);
 
+            if (callPrice == null)
+            {
+                throw new Exception("Preço não encontrado");
+            }
 
+            return callPrice;
 
+        }
+
+        public async Task<int> AddPrice(CallPrice callPrice)
+        {
+            CheckIfPriceIsValid(callPrice);
+
+            await _context.CallPrices.AddAsync(callPrice);
+
+            await _context.SaveChangesAsync();
+
+            return callPrice.Id;
+
+        }
+
+        private void CheckIfPriceIsValid(CallPrice callPrice)
+        {
+            if (callPrice.ToDDD == callPrice.FromDDD)
+                throw new Exception("o DDD de origem deve ser diferente do de destino");
+        }
     }
 }

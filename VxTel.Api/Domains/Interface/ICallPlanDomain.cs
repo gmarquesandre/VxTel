@@ -1,10 +1,11 @@
 ﻿using VxTel.Shared.Models;
 
-namespace VxTel.Api.Domains.Interface
+namespace VxTel.Api.Domains.Implementation
 {
     public interface ICallPlanDomain
     {
-        List<CallPlan> GetAllPlans();
-        CallPlan GetPlanById(int id);
+        Task<int> AddPlanAsync(CallPlan callPlan);
+        Task<List<CallPlan>> GetAllPlans();
+        Task<CallPlan> GetPlanById(int id);
     }
 }

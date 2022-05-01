@@ -19,9 +19,9 @@ namespace VxTel.Api.Controllers
         }
 
         [HttpGet("GetCallPrices")]
-        public IActionResult GetlCallPrices()
+        public async Task<IActionResult> GetlCallPrices()
         {
-            var prices = _priceDomain.GetAllPrices();
+            var prices = await _priceDomain.GetAllPrices();
             //Mapear para Dto
             return Ok(prices);
         }
