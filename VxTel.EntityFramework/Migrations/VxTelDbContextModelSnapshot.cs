@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using VxTel.EntityFramework;
 
 #nullable disable
 
@@ -55,7 +56,7 @@ namespace VxTel.EntityFramework.Migrations
                             ExcedeedTimeFeePercentage = 0.10000000000000001,
                             FreeTime = 30,
                             Name = "FaleMais 30",
-                            Price = 10.0
+                            Price = 30.0
                         },
                         new
                         {
@@ -63,7 +64,7 @@ namespace VxTel.EntityFramework.Migrations
                             ExcedeedTimeFeePercentage = 0.10000000000000001,
                             FreeTime = 60,
                             Name = "FaleMais 60",
-                            Price = 20.0
+                            Price = 50.0
                         },
                         new
                         {
@@ -71,7 +72,7 @@ namespace VxTel.EntityFramework.Migrations
                             ExcedeedTimeFeePercentage = 0.10000000000000001,
                             FreeTime = 120,
                             Name = "FaleMais 120",
-                            Price = 30.0
+                            Price = 70.0
                         });
                 });
 

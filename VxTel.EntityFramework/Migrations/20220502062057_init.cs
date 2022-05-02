@@ -44,9 +44,9 @@ namespace VxTel.EntityFramework.Migrations
                 columns: new[] { "Id", "ExcedeedTimeFeePercentage", "FreeTime", "Name", "Price" },
                 values: new object[,]
                 {
-                    { 1, 0.10000000000000001, 30, "FaleMais 30", 10.0 },
-                    { 2, 0.10000000000000001, 60, "FaleMais 60", 20.0 },
-                    { 3, 0.10000000000000001, 120, "FaleMais 120", 30.0 }
+                    { 1, 0.10000000000000001, 30, "FaleMais 30", 30.0 },
+                    { 2, 0.10000000000000001, 60, "FaleMais 60", 50.0 },
+                    { 3, 0.10000000000000001, 120, "FaleMais 120", 70.0 }
                 });
 
             migrationBuilder.InsertData(

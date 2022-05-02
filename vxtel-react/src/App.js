@@ -1,25 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 import PlanTable from './PlanTable/App';
+import PriceTable from './PriceTable/App';
+import Header from './Header/App'
+import Compare from './Compare/App';
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <PlanTable />
-    </div>
+    <> 
+    <div className="AppStyle">   
+      <Header />
+      <PriceTable />
+      <PlanTable />      
+      <Compare />
+    </div> 
+    </>
   );
 }
 

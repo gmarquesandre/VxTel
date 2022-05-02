@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VxTel.Core.Domains;
+using VxTel.EntityFramework.DefaultValues;
 using VxTel.Shared.Models;
 using Xunit;
 

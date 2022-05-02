@@ -21,7 +21,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<VxTelDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+    options.UseSqlServer("Server=localhost;Initial Catalog=VxTelDb;Trusted_Connection=True");
 
 });
 
