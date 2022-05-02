@@ -4,7 +4,7 @@ using VxTel.Shared.Models;
 
 namespace VxTel.Api.Domains.Implementation
 {
-    public class CallPlanDomain : ICallPlanDomain
+    public class CallPlanDomain 
     {
         VxTelDbContext _context;
         public CallPlanDomain(VxTelDbContext context)

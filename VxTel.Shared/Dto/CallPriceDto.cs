@@ -2,8 +2,9 @@
 {
     public class CallPriceDto
     {
-        public int FromDDD { get; set; }
-        public int ToDDD { get; set; }
-        public decimal PricePerMinute { get; set; }
+        public int Id { get; set; }
+        public string FromDDD { get; set; }
+        public string ToDDD { get; set; }
+        public double PricePerMinute { get; set; }
     }
 }

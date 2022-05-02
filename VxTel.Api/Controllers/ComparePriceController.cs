@@ -9,19 +9,24 @@ namespace VxTel.Api.Controllers
     [Route("[controller]")]
     public class ComparePriceController : ControllerBase
     {
-        private IMapper _mapper;
         private ComparePriceDomain _compareDomain;
 
-        public ComparePriceController(IMapper mapper, ComparePriceDomain compareDomain)
-        {
-            _mapper = mapper;   
+        public ComparePriceController(ComparePriceDomain compareDomain)
+        {  
             _compareDomain = compareDomain;
         }
 
         [HttpPost("PostCallCompare")]
         public async Task<IActionResult> ComparePricesAsync(InputCompareDto input)
-        {          
-            return Ok(await _compareDomain.GetCompareUsagePrice(input));
+        {
+            try
+            {
+                return Ok(await _compareDomain.GetCompareUsagePrice(input));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
 
