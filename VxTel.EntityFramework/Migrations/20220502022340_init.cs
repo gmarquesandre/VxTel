@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace VxTel.Api.Migrations
+namespace VxTel.EntityFramework.Migrations
 {
     public partial class init : Migration
     {
@@ -14,7 +14,7 @@ namespace VxTel.Api.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FreeTime = table.Column<int>(type: "int", nullable: false),
                     ExcedeedTimeFeePercentage = table.Column<double>(type: "float", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false)
@@ -30,8 +30,8 @@ namespace VxTel.Api.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FromDDD = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ToDDD = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FromDDD = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ToDDD = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PricePerMinute = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
@@ -61,6 +61,18 @@ namespace VxTel.Api.Migrations
                     { 5, "011", 0.90000000000000002, "018" },
                     { 6, "018", 1.8999999999999999, "011" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CallPlans_Name",
+                table: "CallPlans",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CallPrices_FromDDD_ToDDD",
+                table: "CallPrices",
+                columns: new[] { "FromDDD", "ToDDD" },
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

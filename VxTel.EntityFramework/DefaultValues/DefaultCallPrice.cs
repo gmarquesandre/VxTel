@@ -1,6 +1,6 @@
 ﻿using VxTel.Shared.Models;
 
-namespace VxTel.Shared.DefaultValues
+namespace VxTel.EntityFramework.DefaultValues
 {
     public class DefaultCallPrice
     {

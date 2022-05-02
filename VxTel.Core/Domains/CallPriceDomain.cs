@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using VxTel.EntityFramework;
 using VxTel.Shared.Models;
 
-namespace VxTel.Api.Domains.Implementation
+namespace VxTel.Core.Domains
 {
     public class CallPriceDomain
     {
@@ -39,7 +39,7 @@ namespace VxTel.Api.Domains.Implementation
             }
 
             return callPrice;
-           
+
         }
 
         public async Task<int> AddPrice(CallPrice callPrice)
@@ -48,10 +48,10 @@ namespace VxTel.Api.Domains.Implementation
 
             await CheckIfAlreadyExists(callPrice);
 
-            await _context.CallPrices.AddAsync(callPrice);            
-            
+            await _context.CallPrices.AddAsync(callPrice);
+
             await _context.SaveChangesAsync();
-            
+
             return callPrice.Id;
 
         }
@@ -66,7 +66,7 @@ namespace VxTel.Api.Domains.Implementation
 
         private void CheckIfPriceIsValid(CallPrice callPrice)
         {
-            if(callPrice.ToDDD == callPrice.FromDDD)
+            if (callPrice.ToDDD == callPrice.FromDDD)
                 throw new Exception("o DDD de origem deve ser diferente do de destino");
         }
     }

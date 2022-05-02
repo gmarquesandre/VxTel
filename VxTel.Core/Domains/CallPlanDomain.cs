@@ -1,10 +1,10 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using VxTel.EntityFramework;
 using VxTel.Shared.Models;
 
-namespace VxTel.Api.Domains.Implementation
+namespace VxTel.Core.Domains
 {
-    public class CallPlanDomain 
+    public class CallPlanDomain
     {
         VxTelDbContext _context;
         public CallPlanDomain(VxTelDbContext context)
@@ -43,7 +43,7 @@ namespace VxTel.Api.Domains.Implementation
         }
         public async Task<CallPlan> GetPlanById(int id)
         {
-            var plan = _context.CallPlans.FirstOrDefault(a => a.Id == id);
+            var plan = await _context.CallPlans.FirstOrDefaultAsync(a => a.Id == id);
             if (plan == null)
             {
                 throw new Exception("Plano não encontrado");

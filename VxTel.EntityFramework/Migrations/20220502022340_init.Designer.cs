@@ -4,14 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using VxTel.Api;
 
 #nullable disable
 
-namespace VxTel.Api.Migrations
+namespace VxTel.EntityFramework.Migrations
 {
     [DbContext(typeof(VxTelDbContext))]
-    [Migration("20220501213005_init")]
+    [Migration("20220502022340_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,12 +38,15 @@ namespace VxTel.Api.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("CallPlans");
 
@@ -85,16 +87,19 @@ namespace VxTel.Api.Migrations
 
                     b.Property<string>("FromDDD")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<double>("PricePerMinute")
                         .HasColumnType("float");
 
                     b.Property<string>("ToDDD")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FromDDD", "ToDDD")
+                        .IsUnique();
 
                     b.ToTable("CallPrices");
 

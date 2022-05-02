@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using VxTel.Shared.DefaultValues;
+using VxTel.EntityFramework.DefaultValues;
 using VxTel.Shared.Models;
 
-namespace VxTel.Api
+namespace VxTel.EntityFramework
 {
     public class VxTelDbContext : DbContext
     {
-        
+
         public VxTelDbContext(DbContextOptions<VxTelDbContext> options)
             : base(options)
         {
@@ -48,11 +48,7 @@ namespace VxTel.Api
         {
             if (options.IsConfigured) return;
 
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build();
-            options.UseSqlServer(configuration.GetConnectionString("Default"));
+            options.UseSqlServer("Server=localhost;Initial Catalog=VxTelDb;Trusted_Connection=True");
         }
 
     }

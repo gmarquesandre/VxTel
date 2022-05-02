@@ -1,6 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using VxTel.Api.Domains.Implementation;
+using VxTel.Core.Domains;
 using VxTel.Shared.Dto;
 
 namespace VxTel.Api.Controllers

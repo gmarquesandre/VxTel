@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using VxTel.Api;
+using VxTel.EntityFramework;
 
 namespace VxTel.Tests
 {

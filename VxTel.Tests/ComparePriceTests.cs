@@ -1,7 +1,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VxTel.Api.Domains.Implementation;
+using VxTel.Core.Domains;
 using VxTel.Shared.Dto;
 using VxTel.Shared.Models;
 using Xunit;

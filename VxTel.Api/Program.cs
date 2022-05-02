@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using VxTel.Api;
-using VxTel.Api.Domains.Implementation;
+using VxTel.Core.Domains;
+using VxTel.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 

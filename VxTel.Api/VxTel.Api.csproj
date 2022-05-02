@@ -22,6 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VxTel.Core\VxTel.Core.csproj" />
+    <ProjectReference Include="..\VxTel.EntityFramework\VxTel.EntityFramework.csproj" />
     <ProjectReference Include="..\VxTel.Shared\VxTel.Shared.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,7 @@
 ﻿using VxTel.Shared.Dto;
 using VxTel.Shared.Models;
 
-namespace VxTel.Api.Domains.Implementation
+namespace VxTel.Core.Domains
 {
     public class ComparePriceDomain
     {
@@ -41,7 +41,7 @@ namespace VxTel.Api.Domains.Implementation
             if (callTime <= planType.FreeTime)
                 return planType.Price;
 
-            double timePrice = (callTime - planType.FreeTime) * callPrice.PricePerMinute * ( 1 + planType.ExcedeedTimeFeePercentage);
+            double timePrice = (callTime - planType.FreeTime) * callPrice.PricePerMinute * (1 + planType.ExcedeedTimeFeePercentage);
 
             double totalPrice = timePrice + planType.Price;
 

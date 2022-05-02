@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VxTel.Api\VxTel.Api.csproj" />
+    <ProjectReference Include="..\VxTel.Core\VxTel.Core.csproj" />
+    <ProjectReference Include="..\VxTel.EntityFramework\VxTel.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>
