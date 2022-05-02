@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using VxTel.Api.Domains.Implementation;
-using VxTel.Shared.DefaultValues;
+using VxTel.Core.Domains;
+using VxTel.EntityFramework.DefaultValues;
 using VxTel.Shared.Models;
 using Xunit;
 

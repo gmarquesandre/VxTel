@@ -40,4 +40,8 @@ var app = builder.Build();
 
     app.MapControllers();
 
-    app.Run();
+    app.UseCors(options =>
+                   options.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader());
+app.Run();

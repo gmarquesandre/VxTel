@@ -1,0 +1,51 @@
+import React from "react";
+import './App.css';
+
+
+class PlanTable extends React.Component {
+   
+    // Constructor 
+    constructor(props) {
+        super(props);
+   
+        this.state = {
+            items: [],
+            DataisLoaded: false
+        };
+    }
+   
+    // ComponentDidMount is used to
+    // execute the code 
+    componentDidMount() {
+        fetch(
+"https://localhost:7203/CallPlan/GetCallPlans")
+            .then((res) => res.json())
+            .then((json) => {
+                this.setState({
+                    items: json,
+                    DataisLoaded: true
+                });
+            })
+    }
+    render() {
+        const { DataisLoaded, items } = this.state;
+        if (!DataisLoaded) return <div>
+            <h1> Pleses wait some time.... </h1> </div> ;
+   
+        return (
+        <div className = "App">
+            <h1> Fetch data from an api in react </h1>  {
+                items.map((item) => ( 
+                <ol key = { item.id } >
+                    Name: { item.name }, 
+                    Free Time: { item.freeTime }, 
+                    Tempo a mais : { item.excedeedTimeFeePercentage } 
+                    </ol>
+                ))
+            }
+        </div>
+    );
+}
+}
+   
+export default PlanTable;
