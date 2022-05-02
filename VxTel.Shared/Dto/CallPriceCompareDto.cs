@@ -1,6 +1,6 @@
 ﻿namespace VxTel.Shared.Dto
 {
-    public class CallPriceCompareDto
+    public class OutputPriceCompareDto
     {
         public string FromDDD { get; set; }
         public string ToDDD { get; set; }

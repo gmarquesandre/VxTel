@@ -50,6 +50,8 @@ namespace VxTel.Tests
             Exception exception = await Assert.ThrowsAsync<Exception>(act);
 
             Assert.Equal(errorMessage, exception.Message);
+
+            await DeleteTestDbAsync(context);
         }
 
         [Fact]
@@ -59,7 +61,7 @@ namespace VxTel.Tests
 
             var _planDomain = new CallPlanDomain(context);
 
-            var defaultCreatedPlans = _planDomain.GetAllPlans();
+            var defaultCreatedPlans = await _planDomain.GetAllPlans();
 
             Func<Task> act = async () => await _planDomain.GetPlanById(defaultCreatedPlans.Select(a => a.Id).Max() + 1);
 
@@ -78,7 +80,7 @@ namespace VxTel.Tests
 
             var defaultToCreatePlans = _defaultCallPlans.GetDefaultPlans();
 
-            var defaultCreatedPlans = _planDomain.GetAllPlans();
+            var defaultCreatedPlans = await _planDomain.GetAllPlans();
 
             Assert.Equal(defaultToCreatePlans.Count, defaultCreatedPlans.Count);
 

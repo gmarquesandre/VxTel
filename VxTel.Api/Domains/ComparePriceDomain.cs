@@ -3,7 +3,7 @@ using VxTel.Shared.Models;
 
 namespace VxTel.Api.Domains.Implementation
 {
-    public class ComparePriceDomain : IComparePriceDomain
+    public class ComparePriceDomain
     {
         private readonly CallPlanDomain _planDomain;
         private readonly CallPriceDomain _priceDomain;
@@ -13,7 +13,7 @@ namespace VxTel.Api.Domains.Implementation
             _priceDomain = priceDomain;
         }
 
-        public async Task<CallPriceCompareDto> GetCompareUsagePrice(InputCompareDto input)
+        public async Task<OutputPriceCompareDto> GetCompareUsagePrice(InputCompareDto input)
         {
             var callPrice = _priceDomain.GetPriceByOriginAndDestiny(input.FromDDD, input.ToDDD);
 
@@ -21,7 +21,7 @@ namespace VxTel.Api.Domains.Implementation
 
             var priceWithPlan = GetPriceWithPlan(planType, callPrice, input.CallTime);
 
-            var result = new CallPriceCompareDto
+            var result = new OutputPriceCompareDto
             {
                 PriceWithoutPlan = callPrice.PricePerMinute * input.CallTime,
                 PriceWithPlan = priceWithPlan,
@@ -41,7 +41,7 @@ namespace VxTel.Api.Domains.Implementation
             if (callTime <= planType.FreeTime)
                 return planType.Price;
 
-            double timePrice = (callTime - planType.FreeTime) * callPrice.PricePerMinute * planType.ExcedeedTimeFeePercentage;
+            double timePrice = (callTime - planType.FreeTime) * callPrice.PricePerMinute * ( 1 + planType.ExcedeedTimeFeePercentage);
 
             double totalPrice = timePrice + planType.Price;
 

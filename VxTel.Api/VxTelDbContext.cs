@@ -26,7 +26,16 @@ namespace VxTel.Api
         {
             base.OnModelCreating(modelBuilder);
 
+            // Modeling
 
+            modelBuilder.Entity<CallPrice>()
+                    .HasIndex(p => new { p.FromDDD, p.ToDDD })
+                    .IsUnique(true);
+
+
+            modelBuilder.Entity<CallPlan>().HasIndex(u => u.Name).IsUnique();
+
+            //Default Values 
             var _defaultValues = new DefaultCallPrice();
             modelBuilder.Entity<CallPrice>().HasData(_defaultValues.GetDefaultPrices());
 
@@ -37,7 +46,6 @@ namespace VxTel.Api
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-
             if (options.IsConfigured) return;
 
             IConfigurationRoot configuration = new ConfigurationBuilder()

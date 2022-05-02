@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using VxTel.Shared.Models;
 
 namespace VxTel.Api.Domains.Implementation
 {
-    public class CallPriceDomain : ICallPriceDomain
+    public class CallPriceDomain
     {
         public VxTelDbContext _context;
         public CallPriceDomain(VxTelDbContext context)
@@ -38,24 +39,34 @@ namespace VxTel.Api.Domains.Implementation
             }
 
             return callPrice;
-
+           
         }
 
         public async Task<int> AddPrice(CallPrice callPrice)
         {
             CheckIfPriceIsValid(callPrice);
 
-            await _context.CallPrices.AddAsync(callPrice);
+            await CheckIfAlreadyExists(callPrice);
 
+            await _context.CallPrices.AddAsync(callPrice);            
+            
             await _context.SaveChangesAsync();
-
+            
             return callPrice.Id;
 
         }
 
+        private async Task CheckIfAlreadyExists(CallPrice callPrice)
+        {
+            var price = await _context.CallPrices.FirstOrDefaultAsync(a => a.FromDDD == callPrice.FromDDD && a.ToDDD == callPrice.ToDDD);
+
+            if (price != null)
+                throw new Exception($"Já existe um registro com origem DDD {callPrice.FromDDD} e destino {callPrice.ToDDD}");
+        }
+
         private void CheckIfPriceIsValid(CallPrice callPrice)
         {
-            if (callPrice.ToDDD == callPrice.FromDDD)
+            if(callPrice.ToDDD == callPrice.FromDDD)
                 throw new Exception("o DDD de origem deve ser diferente do de destino");
         }
     }

@@ -41,7 +41,6 @@ namespace VxTel.Api.Domains.Implementation
 
 
         }
-
         public async Task<CallPlan> GetPlanById(int id)
         {
             var plan = _context.CallPlans.FirstOrDefault(a => a.Id == id);

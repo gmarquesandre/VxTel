@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VxTel.Api.Domains.Implementation;
@@ -27,7 +28,11 @@ namespace VxTel.Tests
 
             var price = _priceDomain.GetPriceById(id);
 
+
             Assert.NotNull(price);
+
+
+            await DeleteTestDbAsync(context);
 
         }
 
@@ -37,13 +42,13 @@ namespace VxTel.Tests
 
             var _priceDomain = new CallPriceDomain(context);
 
-            var defaultCreatedprices = _priceDomain.GetAllPrices();
+            var defaultCreatedprices = await _priceDomain.GetAllPrices();
 
-            Action act = async () => await _priceDomain.GetPriceById(defaultCreatedprices.Select(a => a.Id).Max() + 1);
+            Func<Task> act = async () => await _priceDomain.GetPriceById(defaultCreatedprices.Select(a => a.Id).Max() + 1);
 
-            Exception exception = Assert.Throws<Exception>(act);
+            Exception exception = await Assert.ThrowsAsync<Exception>(act);
 
-            Assert.Equal("priceo não encontrado", exception.Message);
+            Assert.Equal("Preço não encontrado", exception.Message);
         }
 
         [Fact]
@@ -56,13 +61,36 @@ namespace VxTel.Tests
 
             var defaultToCreatePrices = _defaultCallprices.GetDefaultPrices();
 
-            var defaultCreatedPrices = _priceDomain.GetAllPrices();
+            var defaultCreatedPrices = await _priceDomain.GetAllPrices();
 
             Assert.Equal(defaultToCreatePrices.Count, defaultCreatedPrices.Count);
 
             await DeleteTestDbAsync(context);
         }
 
+        [Theory]
+        [MemberData(nameof(CallPrices))]
+        public async Task MustFailOnDuplicatedFromToDDD(CallPrice callPrice)
+        {
+            var context = await CreateTestDbAsync();
+            var _priceDomain = new CallPriceDomain(context);            
+
+            await _priceDomain.AddPrice(callPrice);
+
+            Func<Task> act = async () => await _priceDomain.AddPrice(callPrice);
+
+            Exception exception = await Assert.ThrowsAsync<Exception>(act);
+
+            Assert.Equal($"Já existe um registro com origem DDD {callPrice.FromDDD} e destino { callPrice.ToDDD}", exception.Message);
+
+            await DeleteTestDbAsync(context);
+        }
+
+
+
+        public static IEnumerable<CallPrice[]> CallPrices => new List<CallPrice[]> {
+            new CallPrice[] { new CallPrice() { PricePerMinute = 1.5, FromDDD = "100", ToDDD = "101"} },
+        };
 
     }
 }
