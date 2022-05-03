@@ -21,7 +21,7 @@ namespace VxTel.Tests
             var _planDomain = new CallPlanDomain(context);
             var _comparePriceDomain = new ComparePriceDomain(_planDomain, _priceDomain);
 
-            await _priceDomain.AddPrice(priceTest);
+            int idPrice = await _priceDomain.AddPrice(priceTest);
             int idPlan = await _planDomain.AddPlanAsync(planTest);
 
             inputTest.CallPlanId = idPlan;
