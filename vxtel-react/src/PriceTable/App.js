@@ -77,7 +77,7 @@ class PriceTable extends React.Component {
               </TableHead>
               <TableBody>
                 {items.map((row) => (
-                  <StyledTableRow key={row.name}>
+                  <StyledTableRow key={row.id}>
                     <StyledTableCell align="left">{row.fromDDD}</StyledTableCell>
                     <StyledTableCell align="left">{row.toDDD}</StyledTableCell>
                     <StyledTableCell align="left">R$  {row.pricePerMinute}</StyledTableCell>
