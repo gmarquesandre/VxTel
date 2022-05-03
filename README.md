@@ -57,7 +57,7 @@ Para mapeamento entre o objeto de entidade e o Dto foi utilizado a lib AutoMappe
 
 Para os testes, foram criados três arquivos
 	1. ComparePriceTests -> Afim de garantir que os cálculos realizados pelo ComparePriceDomain seguem conforme o especificado
-	2. PlanTests -> Afim de garantir que os Seeds foram criados, assim como testar a inserção de um novo plano de dados da VxTel de forma correta no banco de dados
+	2. PlanTests -> Afim de garantir que os Seeds foram criados, assim como garantir a inserção de um novo plano de dados da VxTel de forma correta no banco de dados, com validações realizadas dentro do Dominio.
 	3. PriceTests -> Afim de garantir que os Seeds foram criados, assim como testar a inserção de um nova origem e destino de ligações ofertadas pela VxTel e garantir que a modelagem de dados não permita dois registros possiveis para uma mesma origem e destino
 	
 # Frontend
