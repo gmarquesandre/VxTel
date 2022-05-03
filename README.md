@@ -70,9 +70,16 @@ Para execução do projeto, basta executar o comando "npm start"
 
 Na pagina são exibidas duas tabelas, com dados da API anteriormente descrita, uma com preços de origem e destino e outra com os planos disponibilizados pela VxTel
 
+![image](https://user-images.githubusercontent.com/63166456/166401536-7f711083-3fda-423d-afbb-594008c797f5.png)
+
+![image](https://user-images.githubusercontent.com/63166456/166401542-7236e7fd-8f44-43db-ac36-407756fa05c6.png)
+
 No fim da pagina, há como o usuário utilizar os inputs fornecidos para comparar o gasto mensal com e sem algum plano oferecido pela VxTel
 
 ![image](https://user-images.githubusercontent.com/63166456/166401456-11693ea7-cd90-4409-a206-8ae6e416cd0b.png)
+
+![image](https://user-images.githubusercontent.com/63166456/166401518-a6115268-f615-4b6a-8eb4-deaab63b5ee4.png)
+
 
 
 
