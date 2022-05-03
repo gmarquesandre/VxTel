@@ -44,12 +44,5 @@ namespace VxTel.EntityFramework
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            if (options.IsConfigured) return;
-
-            options.UseSqlServer("Server=localhost;Initial Catalog=VxTelDb;Trusted_Connection=True");
-        }
-
     }
 }
